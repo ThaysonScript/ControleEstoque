@@ -1,5 +1,5 @@
 package negocio.entidade;
 
-public class Categorias {
+public class Categoria {
     
 }

@@ -3,17 +3,20 @@ package negocio.entidade;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-public abstract class Produtos {
-    private UUID id;
+public abstract class Produto {
+    private final UUID id;
     private String nome;
     private String descricao;
     private float precoCusto;
     private float precoVenda;
     private int estoqueAtual;
     private boolean ativo;
-    private LocalDateTime dataCriacao;
+    private final LocalDateTime dataCriacao;
     private LocalDateTime dataUltimaAtualizacao;
 
+    private final Categoria categoria;
+    private final Fornecedor fornecedor;
+    
     public LocalDateTime getDataUltimaAtualizacao() {
         return dataUltimaAtualizacao;
     }
@@ -78,7 +81,8 @@ public abstract class Produtos {
         this.nome = nome;
     }
 
-    public Produtos(String nome, String descricao, float precoCusto, float precoVenda, int estoqueAtual, boolean ativo, LocalDateTime dataCriacao, LocalDateTime dataUltimaAtualizacao) {
+    protected Produto(UUID id, String nome, String descricao, float precoCusto, float precoVenda, int estoqueAtual, boolean ativo, LocalDateTime dataCriacao, LocalDateTime dataUltimaAtualizacao, Categoria categoria, Fornecedor fornecedor) {
+        this.id = id;
         this.nome = nome;
         this.descricao = descricao;
         this.precoCusto = precoCusto;
@@ -87,5 +91,7 @@ public abstract class Produtos {
         this.ativo = ativo;
         this.dataCriacao = dataCriacao;
         this.dataUltimaAtualizacao = dataUltimaAtualizacao;
+        this.categoria = categoria;
+        this.fornecedor = fornecedor;
     }
 }
