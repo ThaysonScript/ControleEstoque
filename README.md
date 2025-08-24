@@ -1,18 +1,10 @@
-## Getting Started
+# Projeto (ControleEstoque) de Orientação a Objetos com Foco em Trade-offs
+<p>
+  O trade-off literalmente significa vantagens/desvantagens, este projeto tem como foco definir as vantagens da arquitetura em camadas, padrão de design fachada, conceitos de orientação a objetos e as suas desvantagens e o porque de abordar tal conceito em um viés e não outro.
+</p>
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+<hr>
 
-## Folder Structure
-
-The workspace contains two folders by default, where:
-
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
-
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
-
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
-
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+<p>
+  Este simples projeto poderá demonstrar insights valiosos sobre engenharia de controle de negócio, qualidade e manutenibilidade de código.
+</p>
