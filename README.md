@@ -13,3 +13,44 @@
 <p>
   Exemplo pode ser consultado no livro de <i><strong>"Arthur J. Riel – Object-Oriented Design Heuristics."</strong></i>
 </p>
+
+## Estrutura de Diretórios Sugerida
+```
+src/
+  ├── fachada/
+  |      ├── Fachada.java
+  |
+  ├── apresentacao/
+  │      ├── ConsoleUI.java
+  │
+  ├── negocio/
+  │      ├── entidade/
+  │      |      ├── Entidades.java
+  │      │
+  │      ├── servico/
+  │      │      ├── Servicos.java
+  │      |
+  │      ├── repositorio/
+  │      │      ├── Repositorio.java
+  │      │
+  │      ├── excecao/
+  │      │      ├── Excecao.java
+  │      │
+  │      ├── util/
+  │      |      ├── Utils.java
+  │      |
+  │      ├── dao/
+  │             ├── dao.java
+  |
+  ├── Main.java
+  |
+  ├── dados/
+  │      ├── dados.java
+  |      |
+  |      ├── registros/
+  |             ├── registro1.txt
+  |             ├── registro2.txt
+  |
+  ├── testes/
+         ├── teste.java
+```
