@@ -1,4 +1,4 @@
-package Infraestrutura.Persistencia;
+package Persistencia;
 
 public class GerenciarDados {
     
