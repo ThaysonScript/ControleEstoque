@@ -8,3 +8,8 @@
 <p>
   Este simples projeto poderá demonstrar insights valiosos sobre engenharia de controle de negócio, qualidade e manutenibilidade de código.
 </p>
+
+<hr>
+<p>
+  Exemplo pode ser consultado no livro de <i><strong>"Arthur J. Riel – Object-Oriented Design Heuristics."</strong></i>
+</p>
