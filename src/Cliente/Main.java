@@ -1,3 +1,5 @@
+package Cliente;
+
 import Apresentacao.Cli;
 
 public class Main {
