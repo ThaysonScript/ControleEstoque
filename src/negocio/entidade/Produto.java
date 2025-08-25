@@ -11,26 +11,26 @@ public abstract class Produto {
     private float precoVenda;
     private int estoqueAtual;
     private boolean ativo;
-    private final LocalDateTime dataCriacao;
+    private LocalDateTime dataCriacao;
     private LocalDateTime dataUltimaAtualizacao;
+    private Categoria categoria;
+    private Fornecedor fornecedor;
 
-    private final Categoria categoria;
-    private final Fornecedor fornecedor;
     
     public LocalDateTime getDataUltimaAtualizacao() {
         return dataUltimaAtualizacao;
     }
 
-    public void setDataUltimaAtualizacao(LocalDateTime dataUltimaAtualizacao) {
-        this.dataUltimaAtualizacao = dataUltimaAtualizacao;
+    public void setDataUltimaAtualizacao() {
+        this.dataUltimaAtualizacao = LocalDateTime.now();
     }
 
     public LocalDateTime getDataCriacao() {
         return dataCriacao;
     }
 
-    public void setDataCriacao(LocalDateTime dataCriacao) {
-        this.dataCriacao = dataCriacao;
+    public void setDataCriacao() {
+        this.dataCriacao = LocalDateTime.now();
     }
 
     public boolean isAtivo() {
@@ -81,17 +81,38 @@ public abstract class Produto {
         this.nome = nome;
     }
 
-    protected Produto(UUID id, String nome, String descricao, float precoCusto, float precoVenda, int estoqueAtual, boolean ativo, LocalDateTime dataCriacao, LocalDateTime dataUltimaAtualizacao, Categoria categoria, Fornecedor fornecedor) {
+    protected Produto(UUID id) {
         this.id = id;
-        this.nome = nome;
-        this.descricao = descricao;
-        this.precoCusto = precoCusto;
-        this.precoVenda = precoVenda;
-        this.estoqueAtual = estoqueAtual;
-        this.ativo = ativo;
-        this.dataCriacao = dataCriacao;
-        this.dataUltimaAtualizacao = dataUltimaAtualizacao;
+    }
+
+    public void criarProduto(
+        String nome, String descricao,
+        float precoCusto, float precoVenda,
+        int estoqueAtual, boolean ativo,
+        Categoria categoria, Fornecedor fornecedor
+    ) {
+        setNome(nome);
+        setDescricao(descricao);
+        setPrecoCusto(precoCusto);
+        setPrecoVenda(precoVenda);
+        setEstoqueAtual(estoqueAtual);
+        setAtivo(ativo);
+        setDataCriacao();
+        setDataUltimaAtualizacao();
+
         this.categoria = categoria;
         this.fornecedor = fornecedor;
+    }
+
+    public void consultarProduto() {
+
+    }
+
+    public void editarProduto() {
+
+    }
+
+    public void removerProduto() {
+
     }
 }
