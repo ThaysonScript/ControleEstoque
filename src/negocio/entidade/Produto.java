@@ -14,6 +14,7 @@ public abstract class Produto {
     private int id;
     private String nome;
     private String descricao;
+<<<<<<< HEAD
     private double precoVenda;
     private int estoqueMinimo;
     private int quantidadeDisponivel;
@@ -26,17 +27,72 @@ public abstract class Produto {
 
     public void setId(int id) {
         this.id = id;
+=======
+    private float precoCusto;
+    private float precoVenda;
+    private int estoqueAtual;
+    private boolean ativo;
+    private LocalDateTime dataCriacao;
+    private LocalDateTime dataUltimaAtualizacao;
+    private Categoria categoria;
+    private Fornecedor fornecedor;
+
+    
+    public LocalDateTime getDataUltimaAtualizacao() {
+        return dataUltimaAtualizacao;
+    }
+
+    public void setDataUltimaAtualizacao() {
+        this.dataUltimaAtualizacao = LocalDateTime.now();
+>>>>>>> 346135e915385a7baf7fd519a9cc857d5bcc1707
     }
 
     public String getNome() {
         return nome;
     }
 
+<<<<<<< HEAD
     public void setNome(String nome) throws DadosInvalidosException {
         if (nome == null || nome.trim().isEmpty()) {
             throw new DadosInvalidosException("O nome do produto não pode ser nulo ou vazio.");
         }
         this.nome = nome;
+=======
+    public void setDataCriacao() {
+        this.dataCriacao = LocalDateTime.now();
+    }
+
+    public boolean isAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(boolean ativo) {
+        this.ativo = ativo;
+    }
+
+    public int getEstoqueAtual() {
+        return estoqueAtual;
+    }
+
+    public void setEstoqueAtual(int estoqueAtual) {
+        this.estoqueAtual = estoqueAtual;
+    }
+
+    public float getPrecoVenda() {
+        return precoVenda;
+    }
+
+    public void setPrecoVenda(float precoVenda) {
+        this.precoVenda = precoVenda;
+    }
+
+    public float getPrecoCusto() {
+        return precoCusto;
+    }
+
+    public void setPrecoCusto(float precoCusto) {
+        this.precoCusto = precoCusto;
+>>>>>>> 346135e915385a7baf7fd519a9cc857d5bcc1707
     }
 
     public String getDescricao() {
@@ -58,6 +114,7 @@ public abstract class Produto {
         this.precoVenda = precoVenda;
     }
 
+<<<<<<< HEAD
     public int getEstoqueMinimo() {
         return estoqueMinimo;
     }
@@ -135,6 +192,27 @@ public abstract class Produto {
         this.estoqueMinimo = estoqueMinimo;
         this.quantidadeDisponivel = quantidadeDisponivel;
         this.statusAtivo = statusAtivo;
+=======
+    protected Produto(UUID id) {
+        this.id = id;
+    }
+
+    public void criarProduto(
+        String nome, String descricao,
+        float precoCusto, float precoVenda,
+        int estoqueAtual, boolean ativo,
+        Categoria categoria, Fornecedor fornecedor
+    ) {
+        setNome(nome);
+        setDescricao(descricao);
+        setPrecoCusto(precoCusto);
+        setPrecoVenda(precoVenda);
+        setEstoqueAtual(estoqueAtual);
+        setAtivo(ativo);
+        setDataCriacao();
+        setDataUltimaAtualizacao();
+
+>>>>>>> 346135e915385a7baf7fd519a9cc857d5bcc1707
         this.categoria = categoria;
     }
 
@@ -158,5 +236,17 @@ public abstract class Produto {
 
     public boolean verificarEstoqueBaixo() {
         return this.quantidadeDisponivel < this.estoqueMinimo;
+    }
+
+    public void consultarProduto() {
+
+    }
+
+    public void editarProduto() {
+
+    }
+
+    public void removerProduto() {
+
     }
 }
