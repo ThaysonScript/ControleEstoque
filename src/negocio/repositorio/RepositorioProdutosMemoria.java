@@ -4,6 +4,7 @@ import negocio.entidade.Produto;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 public class RepositorioProdutosMemoria implements IRepositorioProdutos {
@@ -64,5 +65,12 @@ public class RepositorioProdutosMemoria implements IRepositorioProdutos {
             }
         }
         return null;
+    }
+
+    @Override
+    public List<Produto> listarAbaixoDe(int limite) {
+        return this.produtos.stream()
+                .filter(p -> p.getQuantidadeDisponivel() < limite)
+                .collect(Collectors.toList());
     }
 }

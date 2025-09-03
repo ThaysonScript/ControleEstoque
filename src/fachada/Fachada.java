@@ -1,9 +1,6 @@
 package fachada;
 
-import negocio.entidade.Categoria;
-import negocio.entidade.GeradorRelatorioEstoqueBaixo;
-import negocio.entidade.Produto;
-import negocio.entidade.Relatorio;
+import negocio.entidade.*;
 import negocio.excecoes.CategoriaEmUsoException;
 import negocio.excecoes.CategoriaNaoEncontradaException;
 import negocio.excecoes.DadosInvalidosException;
@@ -108,6 +105,16 @@ public class Fachada {
 
     public Relatorio gerarRelatorioEstoqueBaixo() {
         GeradorRelatorioEstoqueBaixo gerador = new GeradorRelatorioEstoqueBaixo(this.repositorioProdutos);
+        return gerador.gerar();
+    }
+
+    public Relatorio gerarRelatorioProdutosAVencer() {
+        GeradorRelatorioProdutosAVencer gerador = new GeradorRelatorioProdutosAVencer(this.repositorioProdutos);
+        return gerador.gerar();
+    }
+
+    public Relatorio gerarRelatorioEstoqueAbaixoDe(int limite) {
+        GeradorRelatorioEstoqueFiltrado gerador = new GeradorRelatorioEstoqueFiltrado(this.repositorioProdutos, limite);
         return gerador.gerar();
     }
 }

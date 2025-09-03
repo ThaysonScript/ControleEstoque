@@ -13,7 +13,7 @@ public class Main {
     private static Scanner scanner = new Scanner(System.in);
     private static TelaCategorias telaCategorias = new TelaCategorias(fachada, scanner);
     private static TelaProdutos telaProdutos = new TelaProdutos(fachada, scanner);
-    private static TelaRelatorios telaRelatorios = new TelaRelatorios(fachada);
+    private static TelaRelatorios telaRelatorios = new TelaRelatorios(fachada, scanner);
 
     public static void main(String[] args) throws Exception {
         DadosPreDefinidos.carregar();

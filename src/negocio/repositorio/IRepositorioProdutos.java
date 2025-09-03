@@ -7,9 +7,9 @@ import java.util.List;
 public interface IRepositorioProdutos {
     void salvar(Produto produto);
     Produto buscarPorId(int id);
+    Produto buscarPorNome(String nome);
     boolean remover(int id);
     List<Produto> listarTodos();
     List<Produto> listarEstoqueBaixo();
-
-    Produto buscarPorNome(String nome);
+    List<Produto> listarAbaixoDe(int limite);
 }
