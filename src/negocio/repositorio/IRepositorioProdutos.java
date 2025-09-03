@@ -10,4 +10,6 @@ public interface IRepositorioProdutos {
     boolean remover(int id);
     List<Produto> listarTodos();
     List<Produto> listarEstoqueBaixo();
+
+    Produto buscarPorNome(String nome);
 }

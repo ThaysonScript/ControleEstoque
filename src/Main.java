@@ -3,7 +3,7 @@ package src;
 import apresentacao.TelaCategorias;
 import apresentacao.TelaProdutos;
 import apresentacao.TelaRelatorios;
-import dados.DadosPreDefinidos;
+import infra.seeds.DadosPreDefinidos;
 import fachada.Fachada;
 
 import java.util.Scanner;

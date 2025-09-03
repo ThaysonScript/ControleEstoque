@@ -17,11 +17,9 @@ public class RepositorioProdutosMemoria implements IRepositorioProdutos {
     @Override
     public void salvar(Produto produto) {
         if (produto.getId() == 0) {
-            // Se o ID é 0, é um novo produto
             produto.setId(proximoId++);
             this.produtos.add(produto);
         } else {
-            // Se o ID já existe, é uma atualização
             this.remover(produto.getId());
             this.produtos.add(produto);
         }
@@ -44,7 +42,7 @@ public class RepositorioProdutosMemoria implements IRepositorioProdutos {
 
     @Override
     public List<Produto> listarTodos() {
-        return new ArrayList<>(this.produtos); // Retorna uma cópia para proteger a lista original
+        return new ArrayList<>(this.produtos);
     }
 
     @Override
@@ -56,5 +54,15 @@ public class RepositorioProdutosMemoria implements IRepositorioProdutos {
             }
         }
         return estoqueBaixo;
+    }
+
+    @Override
+    public Produto buscarPorNome(String nome) {
+        for (Produto produto : this.produtos) {
+            if (produto.getNome().equalsIgnoreCase(nome)) {
+                return produto;
+            }
+        }
+        return null;
     }
 }

@@ -98,9 +98,9 @@ public class Fachada {
         return this.repositorioProdutos.buscarPorId(id);
     }
 
-//    public Produto buscarProdutoPorNome(String nome) {
-//        return this.repositorioProdutos.buscarPorNome(nome);
-//    }
+    public Produto buscarProdutoPorNome(String nome) {
+        return this.repositorioProdutos.buscarPorNome(nome);
+    }
 
     public List<Produto> listarTodosProdutos() {
         return this.repositorioProdutos.listarTodos();

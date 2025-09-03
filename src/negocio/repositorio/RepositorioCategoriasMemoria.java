@@ -5,6 +5,7 @@ import negocio.excecoes.CategoriaNaoEncontradaException;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class RepositorioCategoriasMemoria implements IRepositorioCategorias {
     private final List<Categoria> categorias;
@@ -20,7 +21,7 @@ public class RepositorioCategoriasMemoria implements IRepositorioCategorias {
             categoria.setId(proximoId++);
             this.categorias.add(categoria);
         } else {
-            this.categorias.removeIf(c -> c.getId() == categoria.getId());
+            this.categorias.removeIf(c -> Objects.equals(c.getId(), categoria.getId()));
             this.categorias.add(categoria);
         }
     }
@@ -32,12 +33,17 @@ public class RepositorioCategoriasMemoria implements IRepositorioCategorias {
 
     @Override
     public Categoria buscarPorNome(String nome) {
-        return this.categorias.stream().filter(c -> c.getNome().equalsIgnoreCase(nome)).findFirst().orElse(null);
+        for (Categoria categoria : this.categorias) {
+            if (categoria.getNome().equalsIgnoreCase(nome)) {
+                return categoria;
+            }
+        }
+        return null;
     }
 
     @Override
     public void remover(Integer id) throws CategoriaNaoEncontradaException {
-        boolean removido = this.categorias.removeIf(c -> c.getId() == id);
+        boolean removido = this.categorias.removeIf(c -> Objects.equals(c.getId(), id));
         if (!removido) {
             throw new CategoriaNaoEncontradaException(id.toString());
         }
