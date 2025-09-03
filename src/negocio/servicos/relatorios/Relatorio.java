@@ -1,4 +1,4 @@
-package negocio.entidade;
+package negocio.servicos.relatorios;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

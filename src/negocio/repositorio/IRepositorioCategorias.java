@@ -1,6 +1,6 @@
 package negocio.repositorio;
 
-import negocio.entidade.Categoria;
+import negocio.entidade.categoria.Categoria;
 import negocio.excecoes.CategoriaNaoEncontradaException;
 
 import java.util.List;

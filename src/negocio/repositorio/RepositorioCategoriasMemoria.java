@@ -1,6 +1,6 @@
 package negocio.repositorio;
 
-import negocio.entidade.Categoria;
+import negocio.entidade.categoria.Categoria;
 import negocio.excecoes.CategoriaNaoEncontradaException;
 
 import java.util.ArrayList;
@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class RepositorioCategoriasMemoria implements IRepositorioCategorias {
+    private static RepositorioCategoriasMemoria instance;
     private final List<Categoria> categorias;
     private static int proximoId = 1;
 

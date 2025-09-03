@@ -1,16 +1,16 @@
 package apresentacao;
 
-import fachada.Fachada;
-import negocio.entidade.Relatorio;
+import fachada.RelatorioFachada;
+import negocio.servicos.relatorios.Relatorio;
 
 import java.util.Scanner;
 
 public class TelaRelatorios {
-    private Fachada fachada;
-    private Scanner scanner;
+    private final RelatorioFachada relatorioFachada;
+    private final Scanner scanner;
 
-    public TelaRelatorios(Fachada fachada, Scanner scanner) {
-        this.fachada = fachada;
+    public TelaRelatorios(RelatorioFachada relatorioFachada, Scanner scanner) {
+        this.relatorioFachada = relatorioFachada;
         this.scanner = scanner;
     }
 
@@ -30,19 +30,18 @@ public class TelaRelatorios {
 
                 switch (opcao) {
                     case 1:
-                        // LÓGICA MODIFICADA AQUI
                         System.out.print("Digite o estoque máximo para filtrar (deixe em branco para usar o padrão de cada produto): ");
                         String limiteStr = scanner.nextLine();
 
                         if (limiteStr.trim().isEmpty()) {
-                            relatorio = fachada.gerarRelatorioEstoqueBaixo();
+                            relatorio = relatorioFachada.gerarRelatorioEstoqueBaixo();
                         } else {
                             int limite = Integer.parseInt(limiteStr);
-                            relatorio = fachada.gerarRelatorioEstoqueAbaixoDe(limite);
+                            relatorio = relatorioFachada.gerarRelatorioEstoqueAbaixoDe(limite);
                         }
                         break;
                     case 2:
-                        relatorio = fachada.gerarRelatorioProdutosAVencer();
+                        relatorio = relatorioFachada.gerarRelatorioProdutosAVencer();
                         break;
                     case 0:
                         continue;

@@ -1,4 +1,4 @@
-package negocio.entidade;
+package negocio.entidade.categoria;
 
 import negocio.excecoes.DadosInvalidosException;
 

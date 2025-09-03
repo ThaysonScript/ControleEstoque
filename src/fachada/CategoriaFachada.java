@@ -1,29 +1,36 @@
 package fachada;
 
-import negocio.entidade.*;
+import negocio.entidade.categoria.Categoria;
+import negocio.entidade.produto.Produto;
 import negocio.excecoes.CategoriaEmUsoException;
 import negocio.excecoes.CategoriaNaoEncontradaException;
 import negocio.excecoes.DadosInvalidosException;
 import negocio.excecoes.NegocioException;
-import negocio.repositorio.*;
+import negocio.repositorio.IRepositorioCategorias;
+import negocio.repositorio.IRepositorioProdutos;
+import negocio.repositorio.RepositorioCategoriasMemoria;
+import negocio.repositorio.RepositorioProdutosMemoria;
 
 import java.util.List;
 import java.util.Objects;
 
-public class Fachada {
-    private static Fachada instance;
+public class CategoriaFachada {
+    private static CategoriaFachada instance;
     private final IRepositorioProdutos repositorioProdutos;
     private final IRepositorioCategorias repositorioCategorias;
 
-    private Fachada() {
-        this.repositorioProdutos = new RepositorioProdutosMemoria();
-        this.repositorioCategorias = new RepositorioCategoriasMemoria();
+    private CategoriaFachada(IRepositorioProdutos repoProdutos, IRepositorioCategorias repoCategorias) {
+        this.repositorioProdutos = repoProdutos;
+        this.repositorioCategorias = repoCategorias;
     }
 
-    public static Fachada getInstance() {
+    public static void init(IRepositorioProdutos repoProdutos, IRepositorioCategorias repoCategorias) {
         if (instance == null) {
-            instance = new Fachada();
+            instance = new CategoriaFachada(repoProdutos, repoCategorias);
         }
+    }
+
+    public static CategoriaFachada getInstance() {
         return instance;
     }
 
@@ -68,53 +75,5 @@ public class Fachada {
 
     public List<Categoria> listarTodasCategorias() {
         return this.repositorioCategorias.listarTodas();
-    }
-
-    public void cadastrarProduto(Produto produto) throws NegocioException {
-        if (produto.getCategoria() == null || this.repositorioCategorias.buscarPorId(produto.getCategoria().getId()) == null) {
-            throw new DadosInvalidosException("A categoria associada ao produto não existe.");
-        }
-        this.repositorioProdutos.salvar(produto);
-    }
-
-    public void atualizarProduto(Produto produto) throws NegocioException {
-        if (this.repositorioProdutos.buscarPorId(produto.getId()) == null) {
-            throw new NegocioException("Produto com ID " + produto.getId() + " não encontrado para atualização.");
-        }
-        if (produto.getCategoria() == null || this.repositorioCategorias.buscarPorId(produto.getCategoria().getId()) == null) {
-            throw new DadosInvalidosException("A categoria associada ao produto não existe.");
-        }
-        this.repositorioProdutos.salvar(produto);
-    }
-
-    public void removerProduto(int id) throws NegocioException {
-        this.repositorioProdutos.remover(id);
-    }
-
-    public Produto buscarProdutoPorId(int id) {
-        return this.repositorioProdutos.buscarPorId(id);
-    }
-
-    public Produto buscarProdutoPorNome(String nome) {
-        return this.repositorioProdutos.buscarPorNome(nome);
-    }
-
-    public List<Produto> listarTodosProdutos() {
-        return this.repositorioProdutos.listarTodos();
-    }
-
-    public Relatorio gerarRelatorioEstoqueBaixo() {
-        GeradorRelatorioEstoqueBaixo gerador = new GeradorRelatorioEstoqueBaixo(this.repositorioProdutos);
-        return gerador.gerar();
-    }
-
-    public Relatorio gerarRelatorioProdutosAVencer() {
-        GeradorRelatorioProdutosAVencer gerador = new GeradorRelatorioProdutosAVencer(this.repositorioProdutos);
-        return gerador.gerar();
-    }
-
-    public Relatorio gerarRelatorioEstoqueAbaixoDe(int limite) {
-        GeradorRelatorioEstoqueFiltrado gerador = new GeradorRelatorioEstoqueFiltrado(this.repositorioProdutos, limite);
-        return gerador.gerar();
     }
 }

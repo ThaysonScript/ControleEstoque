@@ -1,5 +1,7 @@
-package negocio.entidade;
+package negocio.servicos.relatorios;
 
+import negocio.entidade.produto.Produto;
+import negocio.entidade.produto.ProdutoPerecivel;
 import negocio.repositorio.IRepositorioProdutos;
 
 import java.time.LocalDate;

@@ -1,18 +1,18 @@
 package apresentacao;
 
-import fachada.Fachada;
-import negocio.entidade.Categoria;
+import fachada.CategoriaFachada;
+import negocio.entidade.categoria.Categoria;
 import negocio.excecoes.NegocioException;
 
 import java.util.List;
 import java.util.Scanner;
 
 public class TelaCategorias {
-    private Fachada fachada;
-    private Scanner scanner;
+    private final CategoriaFachada categoriaFachada;
+    private final Scanner scanner;
 
-    public TelaCategorias(Fachada fachada, Scanner scanner) {
-        this.fachada = fachada;
+    public TelaCategorias(CategoriaFachada categoriaFachada, Scanner scanner) {
+        this.categoriaFachada = categoriaFachada;
         this.scanner = scanner;
     }
 
@@ -58,13 +58,13 @@ public class TelaCategorias {
         System.out.print("Descrição: ");
         String descricao = scanner.nextLine();
 
-        fachada.cadastrarCategoria(new Categoria(nome, descricao));
+        categoriaFachada.cadastrarCategoria(new Categoria(nome, descricao));
         System.out.println("Categoria cadastrada com sucesso!");
     }
 
     private void listar() {
         System.out.println("\n--- Lista de Categorias ---");
-        List<Categoria> categorias = fachada.listarTodasCategorias();
+        List<Categoria> categorias = categoriaFachada.listarTodasCategorias();
 
         if (categorias.isEmpty()) {
             System.out.println("Nenhuma categoria cadastrada.");
@@ -87,11 +87,11 @@ public class TelaCategorias {
         if (opcao == 1) {
             System.out.print("Digite o ID da categoria: ");
             int id = Integer.parseInt(scanner.nextLine());
-            categoria = fachada.buscarCategoriaPorId(id);
+            categoria = categoriaFachada.buscarCategoriaPorId(id);
         } else if (opcao == 2) {
             System.out.print("Digite o nome da categoria: ");
             String nome = scanner.nextLine();
-            categoria = fachada.buscarCategoriaPorNome(nome);
+            categoria = categoriaFachada.buscarCategoriaPorNome(nome);
         } else {
             System.out.println("Opção inválida.");
             return;
@@ -110,7 +110,7 @@ public class TelaCategorias {
         System.out.print("Digite o ID da categoria a ser atualizada: ");
         int id = Integer.parseInt(scanner.nextLine());
 
-        Categoria categoria = fachada.buscarCategoriaPorId(id);
+        Categoria categoria = categoriaFachada.buscarCategoriaPorId(id);
         if (categoria == null) {
             System.out.println("Categoria não encontrada.");
             return;
@@ -125,7 +125,7 @@ public class TelaCategorias {
         if (!nome.trim().isEmpty()) categoria.setNome(nome);
         if (!descricao.trim().isEmpty()) categoria.setDescricao(descricao);
 
-        fachada.atualizarCategoria(categoria);
+        categoriaFachada.atualizarCategoria(categoria);
         System.out.println("Categoria atualizada com sucesso!");
     }
 
@@ -135,7 +135,7 @@ public class TelaCategorias {
         int id = Integer.parseInt(scanner.nextLine());
 
         // Adicionando uma camada de confirmação para segurança
-        Categoria categoria = fachada.buscarCategoriaPorId(id);
+        Categoria categoria = categoriaFachada.buscarCategoriaPorId(id);
         if (categoria == null) {
             System.out.println("Categoria não encontrada.");
             return;
@@ -145,7 +145,7 @@ public class TelaCategorias {
         String confirmacao = scanner.nextLine();
 
         if (confirmacao.equalsIgnoreCase("S")) {
-            fachada.removerCategoria(id);
+            categoriaFachada.removerCategoria(id);
             System.out.println("Categoria removida com sucesso!");
         } else {
             System.out.println("Operação cancelada.");

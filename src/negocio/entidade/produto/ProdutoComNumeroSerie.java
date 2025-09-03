@@ -1,7 +1,7 @@
-package negocio.entidade;
+package negocio.entidade.produto;
 
+import negocio.entidade.categoria.Categoria;
 import negocio.excecoes.ItemNaoEncontradoException;
-import negocio.excecoes.OperacaoInvalidaException;
 
 import java.util.ArrayList;
 import java.util.HashSet;

@@ -1,11 +1,10 @@
 package negocio.repositorio;
 
-import negocio.entidade.Produto;
+import negocio.entidade.produto.Produto;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-
 
 public class RepositorioProdutosMemoria implements IRepositorioProdutos {
     private final List<Produto> produtos;

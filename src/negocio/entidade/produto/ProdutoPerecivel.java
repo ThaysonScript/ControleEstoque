@@ -1,5 +1,6 @@
-package negocio.entidade;
+package negocio.entidade.produto;
 
+import negocio.entidade.categoria.Categoria;
 import negocio.excecoes.DadosInvalidosException;
 
 import java.time.LocalDate;

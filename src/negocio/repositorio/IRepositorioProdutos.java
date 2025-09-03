@@ -1,6 +1,6 @@
 package negocio.repositorio;
 
-import negocio.entidade.Produto;
+import negocio.entidade.produto.Produto;
 
 import java.util.List;
 

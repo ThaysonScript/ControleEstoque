@@ -3,19 +3,35 @@ package src;
 import apresentacao.TelaCategorias;
 import apresentacao.TelaProdutos;
 import apresentacao.TelaRelatorios;
+import fachada.CategoriaFachada;
+import fachada.ProdutoFachada;
+import fachada.RelatorioFachada;
 import infra.seeds.DadosPreDefinidos;
-import fachada.Fachada;
+import negocio.repositorio.IRepositorioCategorias;
+import negocio.repositorio.IRepositorioProdutos;
+import negocio.repositorio.RepositorioCategoriasMemoria;
+import negocio.repositorio.RepositorioProdutosMemoria;
 
 import java.util.Scanner;
 
 public class Main {
-    private static Fachada fachada = Fachada.getInstance();
-    private static Scanner scanner = new Scanner(System.in);
-    private static TelaCategorias telaCategorias = new TelaCategorias(fachada, scanner);
-    private static TelaProdutos telaProdutos = new TelaProdutos(fachada, scanner);
-    private static TelaRelatorios telaRelatorios = new TelaRelatorios(fachada, scanner);
-
     public static void main(String[] args) throws Exception {
+        IRepositorioProdutos repositorioProdutos = new RepositorioProdutosMemoria();
+        IRepositorioCategorias repositorioCategorias = new RepositorioCategoriasMemoria();
+
+        ProdutoFachada.init(repositorioProdutos, repositorioCategorias);
+        CategoriaFachada.init(repositorioProdutos, repositorioCategorias);
+        RelatorioFachada.init(repositorioProdutos);
+
+        ProdutoFachada produtoFachada = ProdutoFachada.getInstance();
+        CategoriaFachada categoriaFachada = CategoriaFachada.getInstance();
+        RelatorioFachada relatorioFachada = RelatorioFachada.getInstance();
+
+        Scanner scanner = new Scanner(System.in);
+        TelaCategorias telaCategorias = new TelaCategorias(categoriaFachada, scanner);
+        TelaProdutos telaProdutos = new TelaProdutos(produtoFachada, categoriaFachada, scanner);
+        TelaRelatorios telaRelatorios = new TelaRelatorios(relatorioFachada, scanner);
+
         DadosPreDefinidos.carregar();
 
         int opcao = -1;

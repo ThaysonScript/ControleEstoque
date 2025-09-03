@@ -1,5 +1,6 @@
-package negocio.entidade;
+package negocio.servicos.relatorios;
 
+import negocio.entidade.produto.Produto;
 import negocio.repositorio.IRepositorioProdutos;
 
 import java.util.ArrayList;

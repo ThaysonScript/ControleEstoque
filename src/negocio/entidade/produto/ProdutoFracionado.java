@@ -1,4 +1,6 @@
-package negocio.entidade;
+package negocio.entidade.produto;
+
+import negocio.entidade.categoria.Categoria;
 
 /**
  * Representa um produto vendido de forma fracionada (e.g., por quilo, litro, metro).

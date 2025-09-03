@@ -1,10 +1,11 @@
 package apresentacao;
 
-import fachada.Fachada;
-import negocio.entidade.Categoria;
-import negocio.entidade.Produto;
-import negocio.entidade.ProdutoComNumeroSerie;
-import negocio.entidade.ProdutoPerecivel;
+import fachada.CategoriaFachada;
+import fachada.ProdutoFachada;
+import negocio.entidade.categoria.Categoria;
+import negocio.entidade.produto.Produto;
+import negocio.entidade.produto.ProdutoComNumeroSerie;
+import negocio.entidade.produto.ProdutoPerecivel;
 import negocio.excecoes.NegocioException;
 
 import java.time.LocalDate;
@@ -13,11 +14,13 @@ import java.util.List;
 import java.util.Scanner;
 
 public class TelaProdutos {
-    private Fachada fachada;
-    private Scanner scanner;
+    private final ProdutoFachada produtoFachada;
+    private final CategoriaFachada categoriaFachada;
+    private final Scanner scanner;
 
-    public TelaProdutos(Fachada fachada, Scanner scanner) {
-        this.fachada = fachada;
+    public TelaProdutos(ProdutoFachada produtoFachada, CategoriaFachada categoriaFachada, Scanner scanner) {
+        this.produtoFachada = produtoFachada;
+        this.categoriaFachada = categoriaFachada;
         this.scanner = scanner;
     }
 
@@ -59,7 +62,7 @@ public class TelaProdutos {
 
     private void listar() {
         System.out.println("\n--- Lista de Produtos ---");
-        List<Produto> produtos = fachada.listarTodosProdutos();
+        List<Produto> produtos = produtoFachada.listarTodosProdutos();
 
         if (produtos.isEmpty()) {
             System.out.println("Nenhum produto cadastrado.");
@@ -95,7 +98,7 @@ public class TelaProdutos {
 
         System.out.print("ID da Categoria: ");
         int catId = Integer.parseInt(scanner.nextLine());
-        Categoria categoria = fachada.buscarCategoriaPorId(catId);
+        Categoria categoria = categoriaFachada.buscarCategoriaPorId(catId);
 
         if (categoria == null) {
             throw new NegocioException("Categoria com ID " + catId + " não encontrada.");
@@ -127,7 +130,7 @@ public class TelaProdutos {
                 return;
         }
 
-        fachada.cadastrarProduto(novoProduto);
+        produtoFachada.cadastrarProduto(novoProduto);
         System.out.println("Produto '" + nome + "' cadastrado com sucesso!");
     }
 
@@ -143,11 +146,11 @@ public class TelaProdutos {
         if (opcao == 1) {
             System.out.print("Digite o ID do produto: ");
             int id = Integer.parseInt(scanner.nextLine());
-            produto = fachada.buscarProdutoPorId(id);
+            produto = produtoFachada.buscarProdutoPorId(id);
         } else if (opcao == 2) {
             System.out.print("Digite o nome do produto: ");
             String nome = scanner.nextLine();
-            produto = fachada.buscarProdutoPorNome(nome);
+            produto = produtoFachada.buscarProdutoPorNome(nome);
         } else {
             System.out.println("Opção inválida.");
             return;
@@ -166,7 +169,7 @@ public class TelaProdutos {
         System.out.print("Digite o ID do produto a ser atualizado: ");
         int id = Integer.parseInt(scanner.nextLine());
 
-        Produto produto = fachada.buscarProdutoPorId(id);
+        Produto produto = produtoFachada.buscarProdutoPorId(id);
         if (produto == null) {
             System.out.println("Produto não encontrado.");
             return;
@@ -210,7 +213,7 @@ public class TelaProdutos {
             produto.setStatusAtivo(Boolean.parseBoolean(atividade));
         }
 
-        fachada.atualizarProduto(produto);
+        produtoFachada.atualizarProduto(produto);
         System.out.println("Produto atualizado com sucesso!");
     }
 
@@ -219,7 +222,7 @@ public class TelaProdutos {
         System.out.print("Digite o ID do produto a ser removido: ");
         int id = Integer.parseInt(scanner.nextLine());
 
-        Produto produto = fachada.buscarProdutoPorId(id);
+        Produto produto = produtoFachada.buscarProdutoPorId(id);
         if (produto == null) {
             System.out.println("Produto não encontrado.");
             return;
@@ -229,7 +232,7 @@ public class TelaProdutos {
         String confirmacao = scanner.nextLine();
 
         if (confirmacao.equalsIgnoreCase("S")) {
-            fachada.removerProduto(id);
+            produtoFachada.removerProduto(id);
             System.out.println("Produto removido com sucesso!");
         } else {
             System.out.println("Operação cancelada.");
@@ -238,7 +241,7 @@ public class TelaProdutos {
 
     private void listarCategoriasParaSelecao() {
         System.out.println("--- Categorias disponíveis ---");
-        List<Categoria> categorias = fachada.listarTodasCategorias();
+        List<Categoria> categorias = categoriaFachada.listarTodasCategorias();
 
         for(Categoria c : categorias) {
             System.out.println("  ID: " + c.getId() + " - " + c.getNome());
