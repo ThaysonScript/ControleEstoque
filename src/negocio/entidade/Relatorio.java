@@ -5,7 +5,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class Relatorio {
-
     private final String titulo;
     private final LocalDateTime dataGeracao;
     private final List<String> cabecalhoColunas;

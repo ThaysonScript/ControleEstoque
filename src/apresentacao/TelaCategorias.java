@@ -19,12 +19,13 @@ public class TelaCategorias {
     public void exibirMenu() {
         int opcao = -1;
         while (opcao != 0) {
-            System.out.println("\n--- Gerenciar Categorias ---");
+            System.out.println("\n\n--- Gerenciar Categorias ---");
             System.out.println("1. Cadastrar nova categoria");
             System.out.println("2. Listar todas as categorias");
             System.out.println("3. Atualizar categoria");
             System.out.println("4. Remover categoria");
             System.out.println("0. Voltar ao menu principal");
+            System.out.println("----------------------------\n");
             System.out.print("Escolha uma opção: ");
 
             try {
@@ -39,6 +40,7 @@ public class TelaCategorias {
                 }
             } catch (NumberFormatException e) {
                 System.out.println("Erro: Entrada inválida. Digite um número.");
+
             } catch (NegocioException e) {
                 System.err.println("Erro de Negócio: " + e.getMessage());
             }
@@ -47,8 +49,10 @@ public class TelaCategorias {
 
     private void cadastrar() throws NegocioException {
         System.out.println("\n--- Cadastro de Categoria ---");
+
         System.out.print("Nome: ");
         String nome = scanner.nextLine();
+
         System.out.print("Descrição: ");
         String descricao = scanner.nextLine();
 
@@ -59,6 +63,7 @@ public class TelaCategorias {
     private void listar() {
         System.out.println("\n--- Lista de Categorias ---");
         List<Categoria> categorias = fachada.listarTodasCategorias();
+
         if (categorias.isEmpty()) {
             System.out.println("Nenhuma categoria cadastrada.");
         } else {
@@ -81,6 +86,7 @@ public class TelaCategorias {
 
         System.out.print("Novo nome (deixe em branco para não alterar): ");
         String nome = scanner.nextLine();
+
         System.out.print("Nova descrição (deixe em branco para não alterar): ");
         String descricao = scanner.nextLine();
 

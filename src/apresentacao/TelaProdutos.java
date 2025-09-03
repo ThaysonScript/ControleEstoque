@@ -28,6 +28,7 @@ public class TelaProdutos {
             System.out.println("1. Cadastrar novo produto");
             System.out.println("2. Listar todos os produtos");
             System.out.println("0. Voltar ao menu principal");
+            System.out.println("--------------------------\n\n");
             System.out.print("Escolha uma opção: ");
 
             try {
@@ -40,8 +41,10 @@ public class TelaProdutos {
                 }
             } catch (NumberFormatException e) {
                 System.out.println("Erro: Entrada inválida. Digite um número.");
+
             } catch (NegocioException e) {
                 System.err.println("Erro de Negócio: " + e.getMessage());
+
             } catch (Exception e) {
                 System.err.println("Erro inesperado: " + e.getMessage());
             }
@@ -51,6 +54,7 @@ public class TelaProdutos {
     private void listar() {
         System.out.println("\n--- Lista de Produtos ---");
         List<Produto> produtos = fachada.listarTodosProdutos();
+
         if (produtos.isEmpty()) {
             System.out.println("Nenhum produto cadastrado.");
         } else {
@@ -71,17 +75,22 @@ public class TelaProdutos {
 
         System.out.print("Nome: ");
         String nome = scanner.nextLine();
+
         System.out.print("Descrição: ");
         String descricao = scanner.nextLine();
+
         System.out.print("Preço de Venda: ");
         double preco = Double.parseDouble(scanner.nextLine());
+
         System.out.print("Estoque Mínimo: ");
         int estMin = Integer.parseInt(scanner.nextLine());
 
         listarCategoriasParaSelecao();
+
         System.out.print("ID da Categoria: ");
         int catId = Integer.parseInt(scanner.nextLine());
         Categoria categoria = fachada.buscarCategoriaPorId(catId);
+
         if (categoria == null) {
             throw new NegocioException("Categoria com ID " + catId + " não encontrada.");
         }
@@ -119,6 +128,7 @@ public class TelaProdutos {
     private void listarCategoriasParaSelecao() {
         System.out.println("--- Categorias disponíveis ---");
         List<Categoria> categorias = fachada.listarTodasCategorias();
+
         for(Categoria c : categorias) {
             System.out.println("  ID: " + c.getId() + " - " + c.getNome());
         }
