@@ -1,6 +1,6 @@
 package negocio.excecoes;
 
-public class ItemNaoEncontradoException extends RuntimeException {
+public class ItemNaoEncontradoException extends NegocioException {
     public ItemNaoEncontradoException(String message) {
         super(message);
     }
