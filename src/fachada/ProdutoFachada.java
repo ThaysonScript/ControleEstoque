@@ -5,8 +5,6 @@ import negocio.excecoes.DadosInvalidosException;
 import negocio.excecoes.NegocioException;
 import negocio.repositorio.IRepositorioCategorias;
 import negocio.repositorio.IRepositorioProdutos;
-import negocio.repositorio.RepositorioCategoriasMemoria;
-import negocio.repositorio.RepositorioProdutosMemoria;
 
 import java.util.List;
 
@@ -15,7 +13,6 @@ public class ProdutoFachada {
     private final IRepositorioProdutos repositorioProdutos;
     private final IRepositorioCategorias repositorioCategorias;
 
-    // Construtor agora recebe as dependências
     public ProdutoFachada(IRepositorioProdutos repoProdutos, IRepositorioCategorias repoCategorias) {
         this.repositorioProdutos = repoProdutos;
         this.repositorioCategorias = repoCategorias;

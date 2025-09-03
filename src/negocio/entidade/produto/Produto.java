@@ -157,16 +157,4 @@ public abstract class Produto {
     public boolean verificarEstoqueBaixo() {
         return this.quantidadeDisponivel < this.estoqueMinimo;
     }
-
-    public void consultarProduto() {
-
-    }
-
-    public void editarProduto() {
-
-    }
-
-    public void removerProduto() {
-
-    }
 }

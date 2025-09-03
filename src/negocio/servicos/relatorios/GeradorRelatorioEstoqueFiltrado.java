@@ -25,11 +25,9 @@ public class GeradorRelatorioEstoqueFiltrado implements IGeradorRelatorio {
     @Override
     public Relatorio gerar() {
         String titulo = "Relatório de Produtos com Estoque Abaixo de " + this.limiteEstoque;
-        // O "Estoque Mínimo" do produto é irrelevante aqui, então não o exibimos.
         List<String> cabecalho = Arrays.asList("ID Produto", "Nome", "Qtd. Disponível");
 
         List<List<String>> linhas = new ArrayList<>();
-        // Usaremos um novo método do repositório para buscar os produtos abaixo do limite.
         List<Produto> produtosFiltrados = this.repositorioProdutos.listarAbaixoDe(this.limiteEstoque);
 
         for (Produto produto : produtosFiltrados) {

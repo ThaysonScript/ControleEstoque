@@ -45,11 +45,11 @@ public class ProdutoFracionado extends Produto {
 
     public void registrarEntrada(double quantidadeFracionada) {
         int quantidadeEmUnidadeBase = (int) (quantidadeFracionada * this.fatorConversao);
-        super.registrarEntrada(quantidadeEmUnidadeBase); // Delega para a lógica da classe pai.
+        super.registrarEntrada(quantidadeEmUnidadeBase);
     }
 
     public void registrarSaida(double quantidadeFracionada) throws Exception {
         int quantidadeEmUnidadeBase = (int) (quantidadeFracionada * this.fatorConversao);
-        super.registrarSaida(quantidadeEmUnidadeBase); // Delega para a lógica da classe pai.
+        super.registrarSaida(quantidadeEmUnidadeBase);
     }
 }

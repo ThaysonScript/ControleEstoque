@@ -1,7 +1,6 @@
 package fachada;
 
 import negocio.repositorio.IRepositorioProdutos;
-import negocio.repositorio.RepositorioProdutosMemoria;
 import negocio.servicos.relatorios.GeradorRelatorioEstoqueBaixo;
 import negocio.servicos.relatorios.GeradorRelatorioEstoqueFiltrado;
 import negocio.servicos.relatorios.GeradorRelatorioProdutosAVencer;

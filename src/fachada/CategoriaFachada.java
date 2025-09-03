@@ -8,8 +8,6 @@ import negocio.excecoes.DadosInvalidosException;
 import negocio.excecoes.NegocioException;
 import negocio.repositorio.IRepositorioCategorias;
 import negocio.repositorio.IRepositorioProdutos;
-import negocio.repositorio.RepositorioCategoriasMemoria;
-import negocio.repositorio.RepositorioProdutosMemoria;
 
 import java.util.List;
 import java.util.Objects;
