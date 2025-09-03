@@ -21,11 +21,20 @@ src/
   |      ├── Fachada.java
   |
   ├── apresentacao/
-  │      ├── ConsoleUI.java
+  │      ├── TelaCategorias.java
+  |      ├── TelaProdutos.java
+  |      ├── TelaRelatorios.java
   │
   ├── negocio/
   │      ├── entidade/
-  │      |      ├── Entidades.java
+  |      |      ├── Categoria.java
+  │      |      ├── Produto.java
+  |      |      ├── ProdutoComNumeroSerie.java
+  |      |      ├── ProdutoPerecivel.java
+  |      |      ├── ProdutoComposto.java
+  |      |      ├── ProdutoFracionado.java
+  |      |      ├── IGeradorRelatorio.java
+  |      |      ├── Relatorio.java
   │      │
   │      ├── servico/
   │      │      ├── Servicos.java
@@ -35,22 +44,7 @@ src/
   │      │
   │      ├── excecao/
   │      │      ├── Excecao.java
-  │      │
-  │      ├── util/
-  │      |      ├── Utils.java
-  │      |
-  │      ├── dao/
-  │             ├── dao.java
   |
   ├── Main.java
-  |
-  ├── dados/
-  │      ├── dados.java
-  |      |
-  |      ├── registros/
-  |             ├── registro1.txt
-  |             ├── registro2.txt
-  |
-  ├── testes/
-         ├── teste.java
+
 ```
